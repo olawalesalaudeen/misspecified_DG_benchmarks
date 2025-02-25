@@ -37,8 +37,8 @@ if torch.cuda.device_count() > 1:
 model.to(device)
 
 # Load data
-amazon_df = pd.read_csv('/lfs/mercury1/0/shinyw/wilds/scripts/verified_amazon_reviews.csv')
-civil_df = pd.read_csv('/lfs/mercury1/0/shinyw/wilds/scripts/civil_df_cleaned.csv')
+amazon_df = pd.read_csv('PATH')
+civil_df = pd.read_csv('PATH')
 
 # Custom Dataset class for the text
 class TextDataset(Dataset):
