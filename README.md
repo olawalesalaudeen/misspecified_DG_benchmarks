@@ -26,7 +26,7 @@ Our work highlights the importance of critically re-evaluating and refining benc
 
 Our primary theoretical result (Theorem 1) introduces the concept of a negative margin under distribution shift, also known as **spurious correlation reversal**. Informally, this margin quantifies how drastically the correlation between spurious features and labels must reverse from the training distribution to the testing distribution for the ID/OOD split to be well-specified. We assume spurious features $Z_\text{spu}$ to be either sub-Gaussian with parameter $\kappa$ (random variables whose tails decay at least as quickly as a Gaussian distribution) or bounded. Define a shift matrix $M$ that parameterizes the distribution shift such that $Z_\text{spu}^{OOD} = MZ_\text{spu}^{ID}$. Then, given weights learned from spurious features \( w_{spu} \) from training (ID) data, the mean vector of spurious features \( \mu_{spu} \), and covariance matrix \( \Sigma_{spu} \), the benchmark is well-specified with probability at least $1-\delta$ if:
 
-\[ w_{spu}^T(M\mu_{spu}) + \sqrt{2\kappa^2 w_{spu}^TM\Sigma_{spu}M^T w_{spu}\log(1/\delta)} < 0 \]
+$$w_{spu}^T(M\mu_{spu}) + \sqrt{2\kappa^2 w_{spu}^TM\Sigma_{spu}M^T w_{spu}\log(1/\delta)} < 0$$
 
 Here, \( w_{spu} \) represents how strongly a model relies on spurious features, and \( M \) indicates the shift in spurious correlations from the training to testing distributions.
 
@@ -36,14 +36,14 @@ Under this condition, models relying on spurious correlations perform worse out-
 
 Mathematically, for classifiers \( f \) and distributions \( P_{ID}, P_{OOD} \):
 
-\[|\Phi^{-1}(acc_{P_{ID}}(f)) - a \cdot \Phi^{-1}(acc_{P_{OOD}}(f))| \leq \epsilon \quad \text{for constants } a, \epsilon \in \mathbb{R},\,\epsilon > 0\]
+$$|\Phi^{-1}(acc_{P_{ID}}(f)) - a \cdot \Phi^{-1}(acc_{P_{OOD}}(f))| \leq \epsilon \quad \text{for constants } a, \epsilon \in \mathbb{R},\,\epsilon > 0$$
 
 Here, \(\Phi^{-1}\) is the inverse Gaussian cumulative density function. A positive \(a\) indicates accuracy on the line; negative \(a\) indicates accuracy on the inverse line.
 
 Our analysis shows a fundamental trade-off (Corrolary 2):
 - Define \(W_\varepsilon\) as the set of shifts (\(M\)'s) satisfying both the well-specified condition and accuracy on the line simultaneously. Then:
 
-\[ W_0 \text{ has Lebesgue measure zero in } \mathbb{R}^{k\times k}, \quad\text{and}\quad W_{\varepsilon_i} \subseteq W_{\varepsilon_j} \quad\text{for } 0 \leq \varepsilon_i \leq \varepsilon_j. \]
+$$W_0 \text{ has Lebesgue measure zero in } \mathbb{R}^{k\times k}, \quad\text{and}\quad W_{\varepsilon_i} \subseteq W_{\varepsilon_j} \quad\text{for } 0 \leq \varepsilon_i \leq \varepsilon_j.$$
 
 Intuitively, as accuracy on the line becomes increasingly perfect (\(\varepsilon \to 0\)), the probability of encountering a well-specified shift vanishes, meaning benchmarks exhibiting strong accuracy on the line rarely test genuine robustness.
 Additionally, the likelihood of observing a well-specified shift increases as the strength of accuracy on the line decreases.
@@ -94,7 +94,6 @@ Additionally, the likelihood of observing a well-specified shift increases as th
     </td>
   </tr>
 </table>
-
 </div>
 
 **Figure 3:** Real-world benchmarks exhibiting varying degrees of accuracy correlation, illustrating well-specified (negative or weak correlation) versus potentially misspecified (strong positive correlation) scenarios. We show some ID/OOD splits of popular domain-generalization benchmarks with a strong positive, weak, or strong negative correlation between in-distribution and out-of-distribution accuracy. Our results suggest that algorithms that consistently provide models with the best transfer accuracies for these splits are at least partially successful in removing spurious correlations.
