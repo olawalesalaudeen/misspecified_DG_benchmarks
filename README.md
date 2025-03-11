@@ -209,6 +209,13 @@ These empirical examples illustrate how benchmarks vary from well-specified (neg
 
 **Figure 4**: ID/OOD splits for WILDSCamelyon dataset.
 
+## Visualization
+./valid_domain_generalization_benchmarks/README.md
+
+```
+cd valid_domain_generalization_benchmarks; streamlit run main.py
+```
+
 ## Reproducing Our Results
 
 Our experiments are conducted using a modification of the [DomainBed](https://github.com/facebookresearch/DomainBed) library. Notably, this our modification includes additional datasets and model architectures than the original domainbed library. The model architectures also include transfer learning and finetuning.
