@@ -112,24 +112,6 @@ These empirical examples illustrate how benchmarks vary from well-specified (neg
 
 **Table 1.** Summary of ID/OOD accuracy correlations across multiple benchmarks. Importantly, these correlations are reported at the granularity of individual ID/OOD splits rather than averaged across entire benchmarks or datasets. We emphasize that evaluating performance at this granularity—specific ID/OOD splits—is crucial for effectively assessing domain generalization. For the Camelyon datasets, we find that, qualitatively, these ID/OOD splits may be well-suited for benchmarking domain genaralization, as previously discussed.
 <div style="width: 100%; margin: auto; display: flex; justify-content: center;">
-<style>
-table.dataframe {
-    border-collapse: collapse;
-    width: 100%;
-}
-table.dataframe th, table.dataframe td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-table.dataframe tr:nth-child(even){background-color: #f2f2f2;}
-table.dataframe tr:hover {background-color: #ddd;}
-table.dataframe th {
-    background-color: #555555;
-    color: white;
-}
-</style>
-
 <table class="dataframe">
 <thead>
 <tr>
