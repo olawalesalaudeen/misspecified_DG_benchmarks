@@ -249,12 +249,12 @@ Model Architectures:
 - ConvNeXt-Tiny (Liu et al., 2022)
 
 
-## Results
+### Results
 Our results only include accuracies for the 'out' split of each domain. Our results include two versions:
 - x-axis: source domain accuracies individually, y-axis: target domain accuracy individually
 - x-axis: average source domain accuracies, y-axis: target domain accuracy individually
 
-## Running the experiments
+### Running the experiments
 To run the experiments, use the following command:
 ```
 python sweep.py --datasets <dataset_names> --algorithms <algorithm_names> --n_hparams <n_hparams> --n_trials <n_trials> --model_arch <model_arch>
