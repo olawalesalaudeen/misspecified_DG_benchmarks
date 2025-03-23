@@ -24,14 +24,17 @@ Our work highlights the importance of critically re-evaluating and refining benc
 
 ## Key Theoretical Insights
 
-Our primary theoretical result (Theorem 1) introduces the concept of a negative margin under distribution shift, also known as **spurious correlation reversal**. Informally, this margin quantifies how drastically the correlation between spurious features and labels must reverse from the training distribution to the testing distribution for the ID/OOD split to be well-specified. We assume spurious features $Z_\text{spu}$ to be either sub-Gaussian with parameter $\kappa$ (random variables whose tails decay at least as quickly as a Gaussian distribution) or bounded. Define a shift matrix $M$ that parameterizes the distribution shift such that $Z_\text{spu}^{OOD} = MZ_\text{spu}^{ID}$. Then, given weights learned from spurious features \( w_{spu} \) from training (ID) data, the mean vector of spurious features \( \mu_{spu} \), and covariance matrix \( \Sigma_{spu} \), the benchmark is well-specified with probability at least $1-\delta$ if:
+**Results 1. Sufficient spurious correlation reversal gives well-specified domain generalization ID/OOD splits.**
 
-$$w_{spu}^T(M\mu_{spu}) + \sqrt{2\kappa^2 w_{spu}^TM\Sigma_{spu}M^T w_{spu}\log(1/\delta)} < 0$$
+Our primary theoretical result (Theorem 1) introduces the concept of a negative margin under distribution shift, also known as **spurious correlation reversal**. Informally, this margin quantifies how drastically the correlation between spurious features and labels must reverse from the training distribution to the testing distribution for the ID/OOD split to be well-specified. We assume spurious features $Z_\text{spu}$ to be either sub-Gaussian with parameter $\kappa$ (we can relax this assumption, e.g., only assume bounded second moments, with only the constant factors adjusted to account for the different concentration properties). Define a shift function $\phi$ such that $\phi$ is $L_\phi$-Lipschitz parameterizes the distribution shift such that $Z_\text{spu}^{OOD} = \phi(Z_\text{spu}^{ID})$, where $\mathbb{E}[Z_\text{spu}^{OOD}] = M\mathbb{E}[Z_\text{spu}^{ID}]$ for $M \in \mathbb{R}^{l\times l}$. Then, given weights learned from spurious features \( w_{spu} \) from training (ID) data, the mean vector of spurious features \( \mu_{spu} \), and covariance matrix \( \Sigma_{spu} \), the benchmark is well-specified with probability at least $1-\delta$ if:
 
-Here, \( w_{spu} \) represents how strongly a model relies on spurious features, and \( M \) indicates the shift in spurious correlations from the training to testing distributions.
+$$w_{spu}^T(M\mu_{spu}) + \sqrt{2(L_\phi \kappa)^2 w_{spu}^T\Sigma_{spu} w_{spu}\log(1/\delta)} < 0$$
 
-Under this condition, models relying on spurious correlations perform worse out-of-distribution than models using only stable, domain-general features.
+Here, \( w_{spu} \) represents how strongly a model relies on spurious features, and \( M \) indicates the mean of the shifted spurious correlations from the training to testing distributions.
 
+
+
+**Results 2. Sufficient spurious correlation reversal (i.e., well-specified) and Accuracy on the line are at odds. They simulataneously hold with probability 0.**
 **Accuracy on the line** occurs when there's a strong linear correlation between in-distribution and out-of-distribution accuracy across various models:
 
 Mathematically, for classifiers \( f \) and distributions \( P_{ID}, P_{OOD} \):
@@ -40,8 +43,8 @@ $$|\Phi^{-1}(acc_{P_{ID}}(f)) - a \cdot \Phi^{-1}(acc_{P_{OOD}}(f))| \leq \epsil
 
 Here, \(\Phi^{-1}\) is the inverse Gaussian cumulative density function. A positive \(a\) indicates accuracy on the line; negative \(a\) indicates accuracy on the inverse line.
 
-Our analysis shows a fundamental trade-off (Corrolary 2):
-- Define \(W_\varepsilon\) as the set of shifts (\(M\)'s) satisfying both the well-specified condition and accuracy on the line simultaneously. Then:
+Our analysis shows a fundamental trade-off (Theorem 2):
+- Define \(W_\varepsilon\) as the set of shifts (\(\phi\)'s) satisfying both the well-specified condition and accuracy on the line simultaneously. Then:
 
 $$W_0 \text{ has Lebesgue measure zero in } \mathbb{R}^{k\times k}, \quad\text{and}\quad W_{\varepsilon_i} \subseteq W_{\varepsilon_j} \quad\text{for } 0 \leq \varepsilon_i \leq \varepsilon_j.$$
 
