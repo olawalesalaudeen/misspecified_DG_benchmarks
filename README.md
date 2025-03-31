@@ -51,7 +51,7 @@ $$W_0 \text{ has Lebesgue measure zero in } \mathbb{R}^{k\times k}, \quad\text{a
 Intuitively, as accuracy on the line becomes increasingly perfect ($\varepsilon \to 0$), the probability of encountering a well-specified shift vanishes, meaning benchmarks exhibiting strong accuracy on the line rarely test genuine robustness.
 Additionally, the likelihood of observing a well-specified shift increases as the strength of accuracy on the line decreases.
 
-## Empirical Validation
+## Empirical Insights
 <div style="display: flex; justify-content: center; gap: 100px;">
   <img src="./figures/gauss_sim.png" alt="Gaussian Simulation" style="width: 33%;"/>
   <img src="./figures/gauss_mix_sim.png" alt="Gaussian Mixture Simulation" style="width: 33%;"/>
