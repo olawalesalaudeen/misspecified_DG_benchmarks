@@ -41,7 +41,7 @@ Mathematically, for classifiers $f$ and distributions $P_{ID},\, P_{OOD}$:
 
 $$|\Phi^{-1}(acc_{P_{ID}}(f)) - a \cdot \Phi^{-1}(acc_{P_{OOD}}(f))| \leq \epsilon \quad \text{for constants } a, \epsilon \in \mathbb{R},\,\epsilon > 0$$
 
-Here, $\Phi^{-1}$ is the inverse Gaussian cumulative density function. A positive $a$ indicates accuracy on the line; negative $a$ indicates accuracy on the inverse line.
+Here, $\Phi^{-1}$ is the inverse Gaussian cumulative density function. A positive $a$ indicates accuracy on the line; negative $a$ indicates accuracy on the inverse line. Smaller $\epsilon$ implies a higher correlation.
 
 Our analysis shows a fundamental trade-off (Theorem 2):
 - Define $W_\varepsilon$ as the set of shifts ($\phi$'s) satisfying both the well-specified condition and accuracy on the line simultaneously. Then:
